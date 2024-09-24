@@ -56,11 +56,11 @@ public class LoginTestfromExcel extends SeleniumTest{
             }
         }
 
-        WebElement emailField = driver.findElement(By.id("username")); // Replace with actual ID
-        WebElement passwordField = driver.findElement(By.id("password")); // Replace with actual ID
-        WebElement loginButton = driver.findElement(By.xpath("//*[@id=\"login\"]/button")); // Replace with actual ID
+        WebElement emailField = driver.findElement(By.id("username"));
+        WebElement passwordField = driver.findElement(By.id("password"));
+        WebElement loginButton = driver.findElement(By.xpath("//*[@id=\"login\"]/button"));
 
-        // Perform login action
+        // Performing login action
         wait.until(ExpectedConditions.elementToBeClickable(emailField));
         emailField.clear();
         emailField.sendKeys(email);
@@ -68,12 +68,11 @@ public class LoginTestfromExcel extends SeleniumTest{
         passwordField.sendKeys(password);
         loginButton.click();
 
-        // Verify that the title text is "Secure Area"
+
         WebElement titleElement = driver.findElement(By.xpath("//h2[contains(text(), 'Secure Area')]"));
         if (titleElement != null && titleElement.getText().equals("Secure Area")) {
             System.out.println("Login successful and page title is 'Secure Area'");
 
-            // Now find the logout button and click it
             WebElement logoutButton = driver.findElement(By.xpath("//a[@class='button secondary radius']")); // Replace with actual XPath
             wait.until(ExpectedConditions.elementToBeClickable(logoutButton));
             logoutButton.click();

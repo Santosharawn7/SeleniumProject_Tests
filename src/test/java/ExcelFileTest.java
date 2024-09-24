@@ -145,7 +145,7 @@ public class ExcelFileTest {
             Sheet sheet = workbook.getSheetAt(0);
 
             for (Row row : sheet) {
-                Cell cellB = row.getCell(1); // Get cell from column B (index 1)
+                Cell cellB = row.getCell(1); // Getting cell from column B (index 1)
 
                 if (cellB != null && cellB.getCellType() == CellType.STRING) {
                     String cellValueB = cellB.getStringCellValue();
