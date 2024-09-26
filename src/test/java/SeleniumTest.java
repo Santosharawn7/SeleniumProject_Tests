@@ -24,6 +24,10 @@ public class SeleniumTest {
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
+    public WebDriver getDriver() {
+        return driver;
+    }
+
     @AfterTest
     void QuitBrowser() {
         driver.quit();
