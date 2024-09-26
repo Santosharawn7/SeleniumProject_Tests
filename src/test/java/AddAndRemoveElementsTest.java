@@ -1,38 +1,31 @@
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
+import Pages.AddOrRemoveElementsPage;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import java.util.List;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class AddAndRemoveElementsTest extends SeleniumTest {
 
-    @Test
-    public void AddElements() {
+    private AddOrRemoveElementsPage addRemoveElementsPage;
 
-        List<WebElement> elements = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//div[@id='content']//a")));
-        for (WebElement element : elements) {
-            System.out.println(element.getText());
-
-            wait.until(ExpectedConditions.elementToBeClickable(element));
-
-            if (element.getText().equals("Add/Remove Elements")) {
-                element.click();
-                break;
-            }
-        }
-
-        WebElement addButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"content\"]/div/button")));
-        addButton.click();
+    @BeforeClass
+    public void setUp() {
+        WebDriver driver = getDriver();  // Assuming getDriver() is defined in SeleniumTest
+        WebDriverWait wait = new WebDriverWait(driver, java.time.Duration.ofSeconds(10));
+        addRemoveElementsPage = new AddOrRemoveElementsPage(driver, wait);
     }
 
+    @Test
+    public void addElements() {
+        addRemoveElementsPage.clickElement("Add/Remove Elements");
+        addRemoveElementsPage.clickAddButton();
+    }
 
     @Test
-    public void RemoveElements() {
+    public void removeElements() {
+        addRemoveElementsPage.clickDeleteButton();
 
-        WebElement deleteElement = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"elements\"]/button")));
-        deleteElement.click();
-
-        boolean isDeleted = wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[@id=\"elements\"]/button")));
+        boolean isDeleted = addRemoveElementsPage.isDeleteButtonInvisible();
 
         if (isDeleted) {
             System.out.println("Element is not visible.");
