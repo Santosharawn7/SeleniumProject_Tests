@@ -8,7 +8,7 @@
     <artifactId>SeleniumTestsWithMaven</artifactId>
     <version>1.0-SNAPSHOT</version>
     <dependencies>
-    <!-- https://mvnrepository.com/artifact/org.testng/testng -->
+    <!-- https://mvnrepository.com/artifact/org.testng/testng --> <!-- testng for technical ppl -->
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
@@ -16,7 +16,7 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java --> <!-- cucumber java for non technical ppl-->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>

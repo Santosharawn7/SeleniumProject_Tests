@@ -1,4 +1,5 @@
 import Demoqa.HomePage;
+import Demoqa.TextBoxPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -12,7 +13,8 @@ public class SeleniumExecutorForDemoQA {
     public static ChromeOptions options;
     public static WebDriver driver;
     public static WebDriverWait wait;
-    protected HomePage homePage; // Change to protected to access it in child classes
+    protected HomePage homePage; // Change to protected to access it in child classes\
+    protected TextBoxPage textBoxPage;
 
     @BeforeTest
     void Setup() {
@@ -31,4 +33,5 @@ public class SeleniumExecutorForDemoQA {
     void QuitBrowser() {
         driver.quit();
     }
+
 }

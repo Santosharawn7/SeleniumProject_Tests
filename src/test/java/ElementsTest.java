@@ -7,7 +7,7 @@ import org.openqa.selenium.JavascriptExecutor;
 
 import java.util.List;
 
-public class ElementsTest extends SeleniumExecutorForDemoQA {
+public class ElementsTest extends SeleniumExecutorForDemoQA { // abstraction
 
     @BeforeTest
     void listAndClickCard() {
@@ -24,7 +24,7 @@ public class ElementsTest extends SeleniumExecutorForDemoQA {
         for (WebElement card : cards) {
             System.out.println(card.getText());
         }
-
+        ((JavascriptExecutor) driver).executeScript(("arguments[0].scrollIntoView(true)"),cards);
         // Click on the card that has the text "Elements"
         homePage.clickOnCard("Elements");
     }
@@ -84,4 +84,21 @@ public class ElementsTest extends SeleniumExecutorForDemoQA {
         }
     }
 
+    @Test(dependsOnMethods = {"listSideNavbarItems"})
+    void clickRadioButton() {
+        List<WebElement> navbarItems = homePage.getSideNavbarItems();
+
+        for (WebElement item : navbarItems) {
+            String itemText = item.getText();
+            System.out.println(itemText);
+
+            if(itemText.equals("Radio Button")){
+                ((JavascriptExecutor) driver).executeScript(("arguments[0].scrollIntoView(true)"),item);
+
+                wait.until(ExpectedConditions.elementToBeClickable(item));
+                item.click();
+                break;
+            }
+        }
+    }
 }
