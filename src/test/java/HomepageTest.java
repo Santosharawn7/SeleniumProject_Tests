@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 
 import java.util.Objects;
 
-public class HomepageTest extends SeleniumTest{
+public class HomepageTest extends SeleniumTest {
 
     @Test
     public void TestRunForHomePage(){
