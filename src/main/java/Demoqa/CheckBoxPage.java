@@ -10,7 +10,7 @@ public class CheckBoxPage {
     private WebDriverWait wait;
 
     private By homeCheckBox = By.xpath("l//*[@id=\"tree-node\"]/ol/li/span/label/span[1]/svg");
-    private By confirmText = By.id("result");
+    private By confirmText = By.id("result/");
 
     public CheckBoxPage(WebDriver driver, WebDriverWait wait){
         this.driver = driver;
