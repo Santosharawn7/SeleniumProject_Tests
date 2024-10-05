@@ -102,5 +102,3 @@ If you want to contribute to this project:
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
-
-Feel free to adjust the README file to better suit your specific project structure, as needed!
