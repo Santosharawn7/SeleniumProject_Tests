@@ -6,6 +6,7 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -50,8 +51,12 @@ public class TextBoxPage {
         driver.findElement(permanentAddress).sendKeys(Paddresss);
     }
 
-    public void clickSubmitButton (){
-        driver.findElement(submitButton).click();
+    public WebElement getSubmitButton(){
+        return driver.findElement(submitButton);
+    }
+
+    public void clickSubmitButton(){
+        getSubmitButton().click();
     }
 
     public void getOutputInfo () {
