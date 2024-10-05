@@ -9,7 +9,7 @@ import java.util.List;
 
 public class ElementsTest extends SeleniumExecutorForDemoQA { // abstraction
 
-    @BeforeTest
+    @Test
     void listAndClickCard() {
         // Ensure that the homePage object is initialized from the parent class
         if (homePage == null) {
@@ -24,12 +24,23 @@ public class ElementsTest extends SeleniumExecutorForDemoQA { // abstraction
         for (WebElement card : cards) {
             System.out.println(card.getText());
         }
-        ((JavascriptExecutor) driver).executeScript(("arguments[0].scrollIntoView(true)"),cards);
         // Click on the card that has the text "Elements"
-        homePage.clickOnCard("Elements");
+        for (WebElement card : cards) {
+            if (card.getText().equals("Elements")) {
+                // Scroll to the card before clicking
+                ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", card);
+
+                // Wait until the card is clickable
+                wait.until(ExpectedConditions.elementToBeClickable(card));
+
+                // Click on the "Elements" card
+                card.click();
+                break;
+            }
+        }
     }
 
-    @Test
+    @Test(dependsOnMethods = {"listAndClickCard"})
     void listSideNavbarItems() {
         // Create an instance of ElementsPage
 
@@ -66,7 +77,7 @@ public class ElementsTest extends SeleniumExecutorForDemoQA { // abstraction
         }
     }
 
-    @Test(dependsOnMethods = {"listSideNavbarItems"})
+    @Test(dependsOnMethods = {"clickTextBox"})
     void clickCheckBox() {
         List<WebElement> navbarItems = homePage.getSideNavbarItems();
 
@@ -84,7 +95,7 @@ public class ElementsTest extends SeleniumExecutorForDemoQA { // abstraction
         }
     }
 
-    @Test(dependsOnMethods = {"listSideNavbarItems"})
+    @Test(dependsOnMethods = {"clickCheckBox"})
     void clickRadioButton() {
         List<WebElement> navbarItems = homePage.getSideNavbarItems();
 

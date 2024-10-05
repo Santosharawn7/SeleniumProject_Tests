@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public class LoginTestfromExcel extends SeleniumTest {
     private LoginPage loginPage;
-    private String filepath = System.getProperty("user.dir") + "/drivers/login-data.xlsx";
+    private String filepath = System.getProperty("user.dir") + "/Data/data.xlsx";
 
     @BeforeClass
     public void setUp() {

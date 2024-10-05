@@ -32,7 +32,7 @@ public class TestingFormWithExcel {
 
     @DataProvider(name = "formData")
     public Object[][] formData() throws IOException {
-        String filePath = System.getProperty("user.dir") + "/drivers/login-data.xlsx";
+        String filePath = System.getProperty("user.dir") + "/Data/data.xlsx";
         FileInputStream file = new FileInputStream(filePath);
         Workbook workbook = new XSSFWorkbook(file);
         Sheet sheet = workbook.getSheetAt(1);

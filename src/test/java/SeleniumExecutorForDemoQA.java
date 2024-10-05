@@ -26,7 +26,8 @@ public class SeleniumExecutorForDemoQA {
         driver.manage().window().maximize();
 
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        homePage = new HomePage(driver); // Initialize here
+        homePage = new HomePage(driver, wait);
+        textBoxPage = new TextBoxPage(driver);// Initialize here
     }
 
     @AfterTest

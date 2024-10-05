@@ -8,7 +8,7 @@ import java.io.IOException;
 
 public class ExcelFileTest {
     private ExcelPage excelPage;
-    private String filepath = System.getProperty("user.dir") + "/drivers/Survey.xlsx";
+    private String filepath = System.getProperty("user.dir") + "/Data/Survey.xlsx";
 
     @BeforeClass
     public void setUp() throws IOException {
