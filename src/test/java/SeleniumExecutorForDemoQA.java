@@ -30,9 +30,9 @@ public class SeleniumExecutorForDemoQA {
         textBoxPage = new TextBoxPage(driver);// Initialize here
     }
 
-    @AfterTest
-    void QuitBrowser() {
-        driver.quit();
-    }
+//    @AfterTest
+//    void QuitBrowser() {
+//        driver.quit();
+//    }
 
 }
