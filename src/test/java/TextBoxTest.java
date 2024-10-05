@@ -1,13 +1,12 @@
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
-import java.util.List;
 
 public class TextBoxTest extends SeleniumExecutorForDemoQA {
+    String filePath = System.getProperty("user.dir") + "/Data/data.xlsx"; // Update this with the correct path to your Excel file
 
     // Expected output values for validation
     String expectedName = "Yanice";
@@ -26,7 +25,10 @@ public class TextBoxTest extends SeleniumExecutorForDemoQA {
         textBoxPage.fillEmail("abc@gmail.com");
         textBoxPage.fillCurrentAddress("HK");
         textBoxPage.fillPermanentAddress("HK");
-        textBoxPage.clickSubmitButton(); // Encapsulation of click action
+        WebElement submitButton = textBoxPage.getSubmitButton();
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", submitButton);
+        textBoxPage.clickSubmitButton();
+        // Encapsulation of click action
         textBoxPage.getOutputInfo(); // Retrieving output info encapsulated in a method
 
         // Validate the output (Polymorphism and Encapsulation)
@@ -39,7 +41,6 @@ public class TextBoxTest extends SeleniumExecutorForDemoQA {
     @Test
     void fillTextBoxFromExcel() {
         // File path to the Excel file
-        String filePath = System.getProperty("user.dir") + "/Data/data.xlsx"; // Update this with the correct path to your Excel file
         int sheetIndex = 2; // Index of the sheet (0-based index)
         int rowIndex = 1; // Index of the row (1-based index for the second row)
 
@@ -62,7 +63,10 @@ public class TextBoxTest extends SeleniumExecutorForDemoQA {
         textBoxPage.fillEmail(inputData[1]);
         textBoxPage.fillCurrentAddress(inputData[2]);
         textBoxPage.fillPermanentAddress(inputData[3]);
-        textBoxPage.clickSubmitButton(); // Encapsulation of click action
+        WebElement submitButton = textBoxPage.getSubmitButton();
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", submitButton);
+        textBoxPage.clickSubmitButton();
+        // Encapsulation of click action
         textBoxPage.getOutputInfo(); // Retrieving output info encapsulated in a method
 
         // Validate the output (Polymorphism and Encapsulation)
@@ -71,5 +75,40 @@ public class TextBoxTest extends SeleniumExecutorForDemoQA {
         Assert.assertTrue(textBoxPage.getOutputCurrentAddress().contains(inputData[2]), "Current Address output doesn't match!");
         Assert.assertTrue(textBoxPage.getOutputPermanentAddress().contains(inputData[3]), "Permanent Address output doesn't match!");
     }
+
+    @Test
+    void fillTextBoxFromExcel2(){
+        int sheetIndex = 2;
+        int rowIndex = 2;
+
+        String[] inputData;
+        try {
+            // Read data from Excel
+            inputData = textBoxPage.readDataFromExcel(filePath, sheetIndex, rowIndex);
+        } catch (IOException e) {
+            e.printStackTrace();
+            Assert.fail("Failed to read data from Excel file."); // print the error
+            return; // Exit the test if data reading fails
+        }
+
+        // Navigating to the TextBox (Abstraction)
+        homePage.navigateToCard("Elements"); // Utilizing the navigate method for cleaner code
+        homePage.navigateToItem("Text Box"); // Abstraction allows hiding implementation details
+
+        textBoxPage.fillFullName(inputData[0]);
+        textBoxPage.fillEmail(inputData[1]);
+        textBoxPage.fillCurrentAddress(inputData[2]);
+        textBoxPage.fillPermanentAddress(inputData[3]);
+        WebElement submitButton = textBoxPage.getSubmitButton();
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", submitButton);
+        textBoxPage.clickSubmitButton();
+
+        Assert.assertTrue(textBoxPage.getOutputName().contains("Yanice"));
+        Assert.assertTrue(textBoxPage.getOutputEmail().contains("abc@gmail.com"));
+        Assert.assertTrue(textBoxPage.getOutputCurrentAddress().contains("HK"));
+        Assert.assertTrue(textBoxPage.getOutputPermanentAddress().contains("HK"));
+
+    }
+
 
 }

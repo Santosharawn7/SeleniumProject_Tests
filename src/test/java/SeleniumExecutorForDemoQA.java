@@ -1,3 +1,4 @@
+import Demoqa.CheckBoxPage;
 import Demoqa.HomePage;
 import Demoqa.TextBoxPage;
 import org.openqa.selenium.WebDriver;
@@ -15,6 +16,7 @@ public class SeleniumExecutorForDemoQA {
     public static WebDriverWait wait;
     protected HomePage homePage; // Change to protected to access it in child classes\
     protected TextBoxPage textBoxPage;
+    protected CheckBoxPage checkBoxPage;
 
     @BeforeTest
     void Setup() {
@@ -28,11 +30,12 @@ public class SeleniumExecutorForDemoQA {
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         homePage = new HomePage(driver, wait);
         textBoxPage = new TextBoxPage(driver);// Initialize here
+        checkBoxPage = new CheckBoxPage(driver,wait);
     }
 
-    @AfterTest
-    void QuitBrowser() {
-        driver.quit();
-    }
+//    @AfterTest
+//    void QuitBrowser() {
+//        driver.quit();
+//    }
 
 }
