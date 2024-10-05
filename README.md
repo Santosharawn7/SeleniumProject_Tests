@@ -20,12 +20,12 @@ The following tests have been implemented:
 
 1. Clone this repository:
     ```bash
-    git clone https://github.com/your-repo-name.git
+    git clone git@github.com:Santosharawn7/SeleniumProject_Tests.git
     ```
 
 2. Navigate to the project directory:
     ```bash
-    cd your-repo-name
+    cd SeleniumProject_Tests
     ```
 
 3. Install the dependencies using Maven:
