@@ -48,7 +48,7 @@ mvn test
 ### Running Specific Test Class
 To run an individual test class, specify the class name:
 ```bash
-mvn -Dtest=CheckBoxTest test
+mvn -Dtest=DemoQA.CheckBoxTest test
 ```
 
 ## Test Details

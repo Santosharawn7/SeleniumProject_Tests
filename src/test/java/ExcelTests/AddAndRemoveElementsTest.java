@@ -1,3 +1,5 @@
+package ExcelTests;
+
 import Pages.AddOrRemoveElementsPage;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -10,7 +12,7 @@ public class AddAndRemoveElementsTest extends SeleniumTest {
 
     @BeforeClass
     public void setUp() {
-        WebDriver driver = getDriver();  // Assuming getDriver() is defined in SeleniumTest
+        WebDriver driver = getDriver();  // Assuming getDriver() is defined in ExcelTests.SeleniumTest
         WebDriverWait wait = new WebDriverWait(driver, java.time.Duration.ofSeconds(10));
         addRemoveElementsPage = new AddOrRemoveElementsPage(driver, wait);
     }

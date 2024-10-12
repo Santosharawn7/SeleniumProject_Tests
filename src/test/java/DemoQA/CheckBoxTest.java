@@ -1,3 +1,6 @@
+package DemoQA;
+
+import DemoQA.SeleniumExecutorForDemoQA;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.Test;
 
