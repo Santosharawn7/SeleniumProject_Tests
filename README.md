@@ -68,11 +68,13 @@ This test reads dates from an Excel file and performs actions based on those dat
 ├── src
 │   ├── main
 │   │   ├── java
-│   │   │   ├── pages
-│   │   │   ├── utils
+│   │   │   ├── Demoqa
+│   │   │   ├── Pages
 │   ├── test
 │   │   ├── java
 │   │   │   ├── tests
+│   │   │   ├─────DemoQA
+│   │   │   ├─────ExcelTests       
 │   │   │   ├── data
 ├── pom.xml
 └── README.md
